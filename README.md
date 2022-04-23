@@ -1,6 +1,6 @@
 # Github Finder App
 
-App to search Github users and display their info.
+A TypeScript Web App to search Github users and display their info.
 
 ---
 
