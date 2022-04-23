@@ -21,7 +21,7 @@ npm install
 ### Run
 
 ```
-npm start
+npm dev
 ```
 
 Tailwind UI created by [Hassib Moddasser](https://twitter.com/hassibmoddasser)
