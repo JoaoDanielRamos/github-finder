@@ -4,7 +4,10 @@ export default function Footer() {
   return (
     <footer className='footer p-10 bg-gray-700 text-primary-content footer-center'>
       <div className='div'>
-        <p>Copyright &copy; {footerYear} - Developed by Joao Ramos.</p>
+        <p>
+          Copyright &copy; {footerYear} - Developed by Joao Ramos {'&'} Designed
+          by Hassib Moddasser
+        </p>
       </div>
     </footer>
   );
