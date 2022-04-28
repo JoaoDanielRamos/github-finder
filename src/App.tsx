@@ -6,6 +6,7 @@ import { AlertProvider } from './context/alert/AlertContext';
 // * Components
 import Navbar from './components/global/Navbar/Navbar';
 import Footer from './components/global/Footer/Footer';
+import Alert from './components/global/Alert/Alert';
 
 // * Pages
 import Home from './pages/Home';
@@ -21,6 +22,7 @@ export default function App() {
             <Navbar title='GitHub Finder' />
 
             <main className='container mx-auto px-3 pb-12'>
+              <Alert />
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
