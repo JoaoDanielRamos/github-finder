@@ -1,4 +1,4 @@
-const githubReducer = (state: any, action: any) => {
+const AlertReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'GET_USERS':
       return {
@@ -25,4 +25,4 @@ const githubReducer = (state: any, action: any) => {
   }
 };
 
-export default githubReducer;
+export default AlertReducer;

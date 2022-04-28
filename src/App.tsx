@@ -1,6 +1,7 @@
 // * Modules
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GithubProvider } from './context/github/GithubContext';
+import { AlertProvider } from './context/alert/AlertContext';
 
 // * Components
 import Navbar from './components/global/Navbar/Navbar';
@@ -14,21 +15,23 @@ import NotFound from './pages/NotFound';
 export default function App() {
   return (
     <GithubProvider>
-      <Router>
-        <div className='flex flex-col justify-between h-screen'>
-          <Navbar title='GitHub Finder' />
+      <AlertProvider>
+        <Router>
+          <div className='flex flex-col justify-between h-screen'>
+            <Navbar title='GitHub Finder' />
 
-          <main className='container mx-auto px-3 pb-12'>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/*' element={<NotFound />} />
-            </Routes>
-          </main>
+            <main className='container mx-auto px-3 pb-12'>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/*' element={<NotFound />} />
+              </Routes>
+            </main>
 
-          <Footer />
-        </div>
-      </Router>
+            <Footer />
+          </div>
+        </Router>
+      </AlertProvider>
     </GithubProvider>
   );
 }
