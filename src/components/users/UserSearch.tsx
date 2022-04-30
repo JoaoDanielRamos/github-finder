@@ -10,6 +10,8 @@ export default function UserSearch() {
   const { users, dispatch } = useContext(GithubContext);
   const { setAlert } = useContext(AlertContext);
 
+  console.log(users);
+
   const handleChange = (event: any) => {
     setText(event.target.value);
   };
@@ -21,8 +23,12 @@ export default function UserSearch() {
       setAlert('Please enter something', 'error');
     } else {
       dispatch({ type: 'SET_LOADING' });
+
       const users = await searchUsers(text);
+      console.log('users', users);
+
       dispatch({ type: 'GET_USERS', payload: users });
+
       setText('');
     }
   };

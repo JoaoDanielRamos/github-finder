@@ -13,7 +13,8 @@ export const searchUsers = async (text: string) => {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
     });
-    const { items } = await response.data;
+
+    const { items } = response.data;
 
     return items;
   } catch (error) {
@@ -44,7 +45,7 @@ export const getUserRepos = async (login: string) => {
     per_page: '10',
   });
 
-   try {
+  try {
     const response = await axios.get(
       `${GITHUB_URL}/users/${login}/repos?${params}`,
       {
