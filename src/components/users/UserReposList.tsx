@@ -1,7 +1,18 @@
+import UserRepoItem from './UserRepoItem';
+
 export default function UserReposList({
   repos,
 }: {
-  repos: { name: string }[];
+  repos: {
+    id: number;
+    name: string;
+    description: string;
+    html_url: string;
+    open_issues: number;
+    watchers_count: number;
+    stargazers_count: number;
+    forks: number;
+  }[];
 }) {
   return (
     <div className='rounded-lg shadow-lg card bg-base-100'>
@@ -10,7 +21,7 @@ export default function UserReposList({
           Latests Repositories
         </h2>
         {repos.map(repo => (
-          <h3>{repo.name}</h3>
+          <UserRepoItem key={repo.id} repo={repo} />
         ))}
       </div>
     </div>
