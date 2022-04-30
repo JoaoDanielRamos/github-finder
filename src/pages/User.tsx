@@ -1,15 +1,13 @@
 import { useContext, useEffect } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import GithubContext from '../context/github/GithubContext';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 import Spinner from '../components/global/Spinner/Spinner';
 import UserReposList from '../components/users/UserReposList';
+import { getUser, getUserRepos } from '../context/github/GithubActions';
 
 export default function User() {
-  let navigate = useNavigate();
-
-  const { user, userRepos, getUserRepos, getUser, loading } =
-    useContext(GithubContext);
+  const { user, loading, userRepos, dispatch } = useContext(GithubContext);
 
   const {
     name,
@@ -28,14 +26,26 @@ export default function User() {
     hireable,
   } = user;
 
-  const params = useParams();
+  const params: any = useParams();
+  console.log(user, userRepos);
 
   useEffect(() => {
-    getUser(params.login);
-    getUserRepos(params.login);
-  }, []);
+    dispatch({ type: 'SET_LOADING' });
 
-  // 8:48
+    const getUserData = async () => {
+      try {
+        const userData = await getUser(params.login);
+        dispatch({ type: 'GET_USER', payload: userData });
+
+        const userReposData = await getUserRepos(params.login);
+        dispatch({ type: 'GET_USER_REPOS', payload: userReposData });
+      } catch (error) {
+        throw new Error();
+      }
+    };
+
+    getUserData();
+  }, []);
 
   if (loading) {
     return <Spinner />;
