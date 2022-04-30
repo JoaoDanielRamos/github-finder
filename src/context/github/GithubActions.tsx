@@ -34,18 +34,12 @@ export const getUserAndRepos = async (login: string) => {
 
   try {
     // * Getting User Information
-    const responseOne = await github.get(`${GITHUB_URL}/users/${login}`);
-    const { data: user } = responseOne;
+    const [user, repos] = await Promise.all([
+      github.get(`${GITHUB_URL}/users/${login}`),
+      github.get(`${GITHUB_URL}/users/${login}/repos?${params}`),
+    ]);
 
-    // * Getting User Repos
-    const responseTwo = await github.get(
-      `${GITHUB_URL}/users/${login}/repos?${params}`
-    );
-    const { data: userRepos } = responseTwo;
-
-    const data = [user, userRepos];
-
-    return data;
+    return { user: user.data, userRepos: repos.data };
   } catch (error) {
     throw new Error();
   }

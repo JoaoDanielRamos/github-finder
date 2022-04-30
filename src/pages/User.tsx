@@ -36,20 +36,13 @@ export default function User() {
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' });
 
-    const fetchUserData = async () => {
-      try {
-        const userData = await getUserAndRepos(params.login);
-        const [userInfo, userRepos] = userData;
-
-        dispatch({ type: 'GET_USER', payload: userInfo });
-        dispatch({ type: 'GET_USER_REPOS', payload: userRepos });
-      } catch (error) {
-        throw new Error();
-      }
+    const getUserData = async () => {
+      const userData = await getUserAndRepos(params.login);
+      dispatch({ type: 'GET_USER_AND_REPOS', payload: userData });
     };
 
-    fetchUserData();
-  }, []);
+    getUserData();
+  }, [dispatch, params.login]);
 
   if (loading) {
     return <Spinner />;
