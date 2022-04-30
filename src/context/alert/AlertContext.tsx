@@ -1,4 +1,7 @@
+// * Modules
 import { createContext, useReducer } from 'react';
+
+// * Reducer
 import AlertReducer from './AlertReducer';
 
 const AlertContext: any = createContext({});

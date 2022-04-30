@@ -1,9 +1,14 @@
+// * Modules
 import { useContext, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import GithubContext from '../context/github/GithubContext';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
+
+// * Components
 import Spinner from '../components/global/Spinner/Spinner';
 import UserReposList from '../components/users/UserReposList';
+
+// * Context / Reducers / Actions
+import GithubContext from '../context/github/GithubContext';
 import { getUserAndRepos } from '../context/github/GithubActions';
 
 export default function User() {

@@ -1,4 +1,7 @@
+// * Modules
 import { useContext } from 'react';
+
+// * Context
 import AlertContext from '../../../context/alert/AlertContext';
 
 export default function Alert() {
